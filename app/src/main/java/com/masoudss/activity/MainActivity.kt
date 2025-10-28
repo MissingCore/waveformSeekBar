@@ -13,14 +13,16 @@ import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.masoudss.R
 import com.masoudss.databinding.ActivityMainBinding
 import com.masoudss.lib.SeekBarOnProgressChanged
 import com.masoudss.lib.WaveformSeekBar
 import com.masoudss.lib.utils.Utils
 import com.masoudss.lib.utils.WaveGravity
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -174,11 +176,10 @@ class MainActivity : AppCompatActivity() {
             progressDialog.setMessage(getString(R.string.message_waiting))
             progressDialog.show()
 
-
-            doAsync {
+            lifecycleScope.launch(Dispatchers.IO) {
                 binding.waveformSeekBar.setSampleFrom(path!!)
 
-                uiThread {
+                withContext(Dispatchers.Main) {
                     progressDialog.dismiss()
                 }
             }

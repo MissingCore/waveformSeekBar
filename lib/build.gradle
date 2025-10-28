@@ -2,12 +2,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 36
     ndkVersion "21.1.6352462"
+
+    namespace 'com.masoudss.lib'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 32
+        targetSdkVersion 36
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -19,13 +21,13 @@ android {
         }
     }
 
+    kotlin {
+        jvmToolchain(21)
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "androidx.appcompat:appcompat:1.4.2"
-    compileOnly 'com.github.lincollincol:amplituda:2.1.0'
-}
-repositories {
-    mavenCentral()
+    implementation "androidx.appcompat:appcompat:1.7.1"
+    compileOnly 'com.github.lincollincol:amplituda:v2.3.1'
 }

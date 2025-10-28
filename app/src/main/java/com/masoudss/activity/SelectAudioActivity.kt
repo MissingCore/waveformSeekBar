@@ -7,12 +7,14 @@ import android.database.Cursor
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.masoudss.adapter.AudioAdapter
 import com.masoudss.databinding.ActivitySelectAudioBinding
 import com.masoudss.model.AudioModel
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class SelectAudioActivity : AppCompatActivity() {
@@ -44,8 +46,7 @@ class SelectAudioActivity : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     private fun loadAudioFiles() {
 
-        doAsync {
-
+        lifecycleScope.launch(Dispatchers.IO) {
             var cursor: Cursor? = null
             try {
                 cursor = contentResolver.query(
@@ -71,7 +72,7 @@ class SelectAudioActivity : AppCompatActivity() {
                 cursor?.close()
             }
 
-            uiThread {
+            withContext(Dispatchers.Main) {
                 binding.audioRecyclerView.adapter?.notifyDataSetChanged()
             }
         }
