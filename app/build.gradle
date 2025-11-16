@@ -39,6 +39,4 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
 
     implementation project(':lib')
-    implementation 'com.github.lincollincol:amplituda:v2.3.1'
-
 }

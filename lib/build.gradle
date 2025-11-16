@@ -29,5 +29,4 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.appcompat:appcompat:1.7.1"
-    compileOnly 'com.github.lincollincol:amplituda:v2.3.1'
 }

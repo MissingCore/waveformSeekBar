@@ -177,7 +177,7 @@ class MainActivity : AppCompatActivity() {
             progressDialog.show()
 
             lifecycleScope.launch(Dispatchers.IO) {
-                binding.waveformSeekBar.setSampleFrom(path!!)
+                // binding.waveformSeekBar.setSampleFrom(path!!)
 
                 withContext(Dispatchers.Main) {
                     progressDialog.dismiss()

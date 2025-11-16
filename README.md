@@ -25,10 +25,6 @@ Add the dependency to your app build.gradle file
 ``` groovy
 dependencies {
     implementation  'com.github.massoudss:waveformSeekBar:5.0.2'
-
-    // Amplitude will allow you to call setSampleFrom() with files, URLs, Uri and resources
-    // Important: Only works with api level 21 and higher
-    implementation 'com.github.lincollincol:amplituda:2.2.2' // or newer version
 }
 ```
 
@@ -67,22 +63,6 @@ just add ``WaveformSeekBar`` in your java/kotlin code or xml.
 ``` kotlin
 // Custom samples
 waveformSeekBar.setSampleFrom(intArrayOf( /* samples */ ))
-
-/* Functions below require Amplituda library dependency */
-// Local audio file
-waveformSeekBar.setSampleFrom(File("/storage/emulated/0/Music/song.mp3"))
-
-// Path to local file
-waveformSeekBar.setSampleFrom("/storage/emulated/0/Music/song.mp3")
-
-// Url
-waveformSeekBar.setSampleFrom("https://audio-url-example.com/song.mp3")
-
-// Uri
-waveformSeekBar.setSampleFrom("URI")
-
-// Resource (res/raw)
-waveformSeekBar.setSampleFrom(R.raw.song)
 ```
 ### Add markers
 You can add markers to your waveform. Use `setMarker()` to provide a HashMap of positions (float value between 0 and `maxProgress`) and text to display.

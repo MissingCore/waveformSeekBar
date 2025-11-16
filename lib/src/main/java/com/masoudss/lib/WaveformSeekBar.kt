@@ -11,7 +11,6 @@ import androidx.annotation.RawRes
 import com.masoudss.lib.utils.ThreadBlocking
 import com.masoudss.lib.utils.Utils
 import com.masoudss.lib.utils.WaveGravity
-import com.masoudss.lib.utils.WaveformOptions
 import java.io.File
 import kotlin.math.abs
 import kotlin.math.floor
@@ -208,32 +207,6 @@ open class WaveformSeekBar @JvmOverloads constructor(
     @ThreadBlocking
     fun setSampleFrom(samples: IntArray) {
         this.sample = samples
-    }
-
-    @ThreadBlocking
-    fun setSampleFrom(audio: File) {
-        setSampleFrom(audio.path)
-    }
-
-    @ThreadBlocking
-    fun setSampleFrom(audio: String) {
-        WaveformOptions.getSampleFrom(context, audio) {
-            sample = it
-        }
-    }
-
-    @ThreadBlocking
-    fun setSampleFrom(@RawRes audio: Int) {
-        WaveformOptions.getSampleFrom(context, audio) {
-            sample = it
-        }
-    }
-
-    @ThreadBlocking
-    fun setSampleFrom(audio: Uri) {
-        WaveformOptions.getSampleFrom(context, audio) {
-            sample = it
-        }
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
